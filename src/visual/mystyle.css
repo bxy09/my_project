@@ -1,0 +1,220 @@
+
+body
+{
+  background: url('img/binding_dark.png');
+  cursor: default;
+  
+}
+#indicator
+{
+	height: 160px;
+	margin: 20px 0px 0px 100px;
+}
+#data_div
+{
+  height:130px;
+  float:left;
+  margin:0px,20px,10px,0px;
+  text-shadow:1px 1px 2px black, 0 0 0.1em gold, 0 0 0.1em gold;
+  font-size:20pt;
+  font-family: 'Noto Serif', serif;
+  color: gray;
+}
+#sub_data_div
+{
+  height: 110px;
+  margin-left: 30px;
+  margin-top: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  float:left;
+  overflow: hidden;
+}
+#color_projector canvas
+{
+  margin-left: 30px;
+  height: 120px;
+  width: 120px;
+  margin-top: 5px;
+  border-top: 1px solid gold;
+  border-bottom: 1px solid gold;
+}
+#top_panel
+{
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  margin-left:50px;
+  margin-right: 50px;
+}
+#canvas
+{
+	background-color: black;
+  position: relative;
+	overflow: auto;
+	left:0px;
+  border:1px solid rgba(255,255,255,0.3)
+}
+#upper_layer
+{
+  position: absolute;
+  cursor:none;
+  top:0px;
+  left:0px;
+}
+#left_panel
+{
+  width:100px;
+  position: relative;
+  overflow: hidden;
+  float:left;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#left_table
+{
+  position: absolute;
+  text-align: right;
+  width:100px;
+}
+#top_table
+{
+  height: 40px;
+  position: absolute;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+table
+{
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+
+#left_panel tr
+{
+  overflow: hidden;
+  height: 22px;
+  text-align: right;
+  width:100px;
+  color:gray;
+}
+#left_panel td
+{
+  height: 22px;
+  text-align: right;
+  width:100px;
+  color:gray;
+}
+#top_row td
+{
+  color:gray;
+  font-weight:normal;
+  font-size:12pt;
+   overflow: hidden;
+   vertical-align: bottom;
+   white-space:nowrap;
+}
+#top_row div
+{
+  width:60px;
+  position: relative;
+  text-align:center;
+}
+#top_row p
+{
+  position: absolute;
+}
+#select_sub_data div
+{
+  float:left;
+  color:gold;
+  height: 20px;
+}
+.sub_data_bar
+{
+  /*width:430px;*/
+  margin: 0px 0px 5px 0px;
+}
+.sub_data_name
+{
+  width:70px;
+  color:gold;
+}
+.sub_data_current_value
+{
+  width:40px;
+}
+.sub_data_max_value
+{
+  padding-left: 10px;
+  width: 40px;
+}
+.sub_data_displaybar_fron
+{
+  width: 0px;
+  height: 20px;
+  background-color: red;
+}
+.sub_data_displaybar_back
+{
+  width: 200px;
+  height: 20px;
+  background-color: gold;
+}
+.color_switch
+{
+  margin-left: 110px;
+  width:200px;
+  background-color: gray;
+  border-radius: 10px;
+}
+.color_switch_thumb
+{
+  margin-left: 0px;
+  width:100px;
+  background-color: gold;
+  border-radius: 10px;
+}
+#projector_canvas
+{
+  position: relative;
+}
+.scroll-pane{
+    scrollbar-face-color: #367CD2;
+    scrollbar-shadow-color: #FFFFFF;
+    scrollbar-highlight-color: #FFFFFF;
+    scrollbar-3dlight-color: #FFFFFF;
+    scrollbar-darkshadow-color: #FFFFFF;
+    scrollbar-track-color: #FFFFFF;
+    scrollbar-arrow-color: #FFFFFF;
+}
+
+/* Let's get this party started */
+.scroll-pane::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+ 
+/* Track */
+.scroll-pane::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3); */
+    /*-webkit-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+}
+ 
+/* Handle */
+.scroll-pane::-webkit-scrollbar-thumb {
+    /*-webkit-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+    background: rgba(247,189,64,0.4); 
+    /*-webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3); */
+}
+@font-face {
+  font-family: 'Noto Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Serif'), local('NotoSerif'), url(font/note_serif.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed Regular'), local('RobotoCondensed-Regular'), url(font/roboto.woff) format('woff');
+}

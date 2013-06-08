@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="mystyle.css" />
+  <script type="text/javascript" src="data.2013"></script>
+  </head>
+  <body>
+    <div id="indicator">
+      <div id="data_div">
+        <table>
+            <tbody id="select_data">
+            </tbody>
+        </table>
+      </div>
+      <div id="sub_data_div">
+        <table>
+          <tbody id="select_sub_data">
+          </tbody>
+        </table>
+      </div>
+      <div id="color_projector">
+        <canvas id="projector_canvas" width="120" height="120">
+        </canvas>
+      </div>
+    </div>
+    <div id="containner">
+      <div id="top_panel">
+        <table id="top_table">
+            <tr id="top_row">
+            </tr>
+        </table>
+      </div>
+      <div id="left_panel">
+        <table>
+          <tbody id="left_table">
+          </tbody>
+        </table>
+      </div>
+      <div id="canvas" class="scroll-pane">
+        <canvas id="upper_layer" width="2000" height="1000" style="border:0px">
+        </canvas>
+        <canvas id="myCanvas" width="2000" height="1000" style="border:0px">
+        Your browser does not support the canvas element.
+        </canvas>
+      </div>
+    </div>
+  <script src="function.js"></script>
+  </body>
+</html>

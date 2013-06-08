@@ -1,0 +1,4 @@
+*.[oa]
+bin
+raw_data
+*.tmp
