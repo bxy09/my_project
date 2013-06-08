@@ -25,10 +25,62 @@ function load_sars(){
 });
 jQuery.support.cors = true;
  
-var databaseUrl= "http://localhost:9292";
-jQuery.ajax(databaseUrl + '/' + 'messages', { 
-	type: 'get',
-	success: function (collections) {
-		console.log(collections);
+var databaseUrl= "http://192.168.1.100:27080";
+
+findOne('messages', 'c01b09', {}, {'logTime':1},{'logTime':1},function(target){console.log(target);});
+///////////////////////////////////////////////////////////////////////
+//MongoDB
+function findOne(db, collection, criteria, fields, sort, foreach_function) {
+	var cursor_id;
+	jQuery.ajax(databaseUrl + '/' + db+'/'+collection+
+		'/_find?'+
+		'criteria='+encodeURI(JSON.stringify(criteria))+
+		'&fields='+encodeURI(JSON.stringify(fields))+
+		'&limit=1'+
+		'&sort='+encodeURI(JSON.stringify(sort))	, { 
+		type: 'get',
+		success: function (collections) {
+			if(collections.ok != 1) {console.log("can't find!!");return;}
+			cursor_id = collections.id;
+			if(collections.results.length == 0) {return;}
+			for(var i =0; i < collections.results.length;i++)  {
+				foreach_function(collections.results[i]);
+			}
+		}
+	});
+}
+function findAll(db, collection, criteria, fields, sort, foreach_function) {
+	var cursor_id;
+	jQuery.ajax(databaseUrl + '/' + db+'/'+collection+
+		'/_find?'+
+		'criteria='+encodeURI(JSON.stringify(criteria))+
+		'&fields='+encodeURI(JSON.stringify(fields))+
+		'&sort='+encodeURI(JSON.stringify(sort))	, { 
+		type: 'get',
+		success: function (collections) {
+			if(collections.ok != 1) {console.log("can't find!!");return;}
+			cursor_id = collections.id;
+			if(collections.results.length == 0) {return;}
+			for(var i =0; i < collections.results.length;i++)  {
+				foreach_function(collections.results[i]);
+			}
+			more();
+		}
+	});
+	function more() {
+		jQuery.ajax(databaseUrl + '/' + db+'/'+collection+
+			'/_more?'+
+			'id='+cursor_id, { 
+			type: 'get',
+			success: function (collections) {
+				if(collections.ok != 1) {console.log("can't find!!");return;}
+				var cursor_id = collections.id;
+				if(collections.results.length == 0) {return;}
+				for(var i =0; i < collections.results.length;i++) {
+					foreach_function(collections.results[i]);
+				}
+				more();
+			}
+		});
 	}
-});
+}
