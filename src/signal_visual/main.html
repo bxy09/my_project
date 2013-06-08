@@ -7,27 +7,37 @@
 	<script type="text/javascript" src="data.js"></script>
 </head>
 <body>
-	<div id="node_display">
-	</div>
-	<div id="time_display">
+	<div id="headline">
+		<div id="node_display">
+		</div>
+		<div id="time_display">
+		</div>
+		<div id="sar_display">
+		</div>
+		<div id="log_display">
+		</div>
 	</div>
 	<div id="time_select">
+		<ul></ul>
+	</div>
+	<div id="sar_select">
+		<ul></ul>
+	</div>
+	<div id="log_select">
+		<ul></ul>
 	</div>
 	<div id="node_select">
+		<ul></ul>
 	</div>
 	<div id="central_panel">
 		<div id="sar_canvas">
-			<canvas id="sar_draw">
+			<canvas id="sar_draw" width = 1000,height =200>
 			</canvas>
 		</div>
 		<div id="log_canvas">
-			<canvas id="log_draw">
+			<canvas id="log_draw" width = 1000,height = 200>
 			</canvas>
 		</div>
-	</div>
-	<div id="sar_select">
-	</div>
-	<div id="sig_select">
 	</div>
 	<script src="function.js"></script>
 </body>

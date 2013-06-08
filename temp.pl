@@ -2,10 +2,10 @@
 use Data::Dumper;
 open FIN,"<$ARGV[0]";
 while(my $line = <FIN>){
-	my @terms = ();
-	@temrs = split (/\s/,$line);
-	print $line;
-	print ":::".Dumper(@terms).":::\n";
-	defined $terms[6] or $terms[6] = -1;
-	print "{id1:'$terms[0]',id2:'$terms[1]',pos:$term[4],neg:$term[6]}\n";
+	my ($a,$b,$pos,$neg) = $line =~m/^(\S+)\s+(\S+)\s+\d+\s+(\d+)\s+(\d+)/;
+	unless(defined $neg) {
+		$neg = -1;
+		($a,$b,$pos) = $line =~m/^(\S+)\s+(\S+)\s+\d+\s+(\d+)/;
+	}
+	print "{id1:'$a',id2:'$b',pos:$pos,neg:$neg},\n";
 }
