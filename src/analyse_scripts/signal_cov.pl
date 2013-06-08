@@ -137,25 +137,6 @@ foreach my $couple (@$big_ratio_couple) {
 	print "\n";
 }
 #####################################################
-sub get_all_records {
-	my $i = shift @_;
-	my $node = shift @_;
-	my $i_handle = MongoDB::Connection->new()->get_database($signals[$i]->{db});
-	my $ret_hash;
-	my $records_sum = 0;
-	my $i_cursor= $i_handle->get_collection($node)->find({'tempID'=>$signals[$i]->{tempID}},{'logTime'=>1})->sort({'logTime'=>1});
-	my @node_records_vec;
-	my $time = 0;
-	while(my $i_record = $i_cursor->next()) {
-		if($i_record->{logTime}-$time<10*60) {
-			next;
-		}
-		$time = $i_record->{logTime};
-		push @node_records_vec,$time;
-		$records_sum++;
-	}
-	return \@node_records_vec;
-}
 sub read_records {
 	my $thread_id = shift @_;
 	my $pair;
