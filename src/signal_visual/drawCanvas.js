@@ -46,11 +46,8 @@ function draw_base_line(context,max,min) {
 			canvas_size.height - border_bottom + 15);
     }
 	
-	//context.moveTo(border_left,canvas_size.height - border_bottom - inside_height);
-	//context.lineTo(border_left+inside_width,canvas_size.height - border_bottom - inside_height);
 	context.strokeStyle='rgba(0,0,0,1)';
 	context.stroke();
-	//draw y
 }
 function draw_sar(frame_id){
 	sar_draw.width = canvas_size.width;
