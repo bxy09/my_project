@@ -21,17 +21,28 @@ body{
 	-moz-border-radius: 4px;
 	-o-border-radius: 4px;
 	-khtml-border-radius: 4px;
-	height: 20px;
+	height: 24px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	color: gray;
 }
 #headline div{
+	font-family:"Times New Roman",Georgia,Serif;
 	overflow: hidden;
-	height: 20px;
+	height: 24px;
 	text-align: center;
-	font-size: 20px;
-	border-color: white;
-	border-width: 2px;
+}
+#headline span{
+	font-family:"Times New Roman",Georgia,Serif;
+	overflow: hidden;
+	margin:auto;
+	height: 24px;
+	text-align: center;
+	font-size: 18px;
+}
+#headline span:hover{
+	color: black;
+	text-shadow: 3px 3px 20px white;
 }
 .head_display{
 }
@@ -54,9 +65,18 @@ body{
 	box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
 	padding-right: auto;
 	text-align: center;
-	color: #fff;
+	color: #ddd;
 	display: none;
 	float:none;
+}
+.head_select table{
+	margin-left: auto;
+	margin-right: auto;
+	width : 800px;
+}
+.head_select td:hover{
+	color: #fff;
+	text-shadow:black 0 1px 3px;
 }
 #node_display{
 	float:left;

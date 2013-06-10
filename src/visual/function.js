@@ -1,4 +1,4 @@
-     
+
 var current_on = {x:-1,y:-1};
 var current_e = undefined;
 var move_draw_flag = 0;
@@ -100,7 +100,6 @@ function move_draw(){
         current_e = undefined;
 		move_draw_flag = 0;
         if(draw_canvas({x:-1,y:-1},current_on)) {
-            console.warn(current_on);
 			$("#left"+last_on.y).css({"color":"gray"});
 			$("#left"+last_on.y).animate({"font-weight":"normal","font-size":"12pt"});
 			$("#top"+last_on.x).css({"color":"gray"});
@@ -115,7 +114,6 @@ function move_draw(){
 		if(down_count != 0) {setTimeout('move_draw()',20);return;}
         move_draw_flag = 0;
 		draw_canvas(current_on,current_on);
-		console.warn()
 		var left_y = $("#left"+y);
 		left_y.stop(true,false);
 		left_y.css({"color":"gold","font-weight":"bold","font-size":"20pt"});
@@ -199,7 +197,6 @@ function init_data_and_canvas(data_index) {
         top_row.append(new_column);
     }
     var sub_data_table = $("#select_sub_data");
-    console.warn(sub_data_table);
     sub_data_table.empty();
     for(var i = 0;i < sub_data_name[data_index].length;i++) {
         var color = [0,0,0];
@@ -213,7 +210,6 @@ function init_data_and_canvas(data_index) {
             "</div></div>"+
             "<div class=\'sub_data_max_value\'>"+all_data[data_index]['statics'][i][0]['cover']+"</div>"+
             "</div></td></tr>";
-        console.warn(sub_data_name[data_index][i]);
         sub_data_table.append(new_column);
 		color = " gray";
 		if(sub_data_switch[i]) {color = " gold"}

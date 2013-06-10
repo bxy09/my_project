@@ -9,26 +9,26 @@
 <body>
 	<div id="all">
 	<div id="headline">
-		<div id="node_display" class="head_display">
+		<div id="node_display" class="head_display"><span index=0 ></span>
 		</div>
-		<div id="time_display" class="head_display">
+		<div id="time_display" class="head_display"><span index=1 ></span>
 		</div>
-		<div id="sar_display" class="head_display">
+		<div id="sar_display" class="head_display"><span index=2 ></span>
 		</div>
-		<div id="log_display" class="head_display">
+		<div id="log_display" class="head_display"><span index=3 ></span>
 		</div>
 	</div>
-	<div id="time_select" class="head_select">
+	<div id="node_select" index=0 class="head_select">
 		<table></table>
 	</div>
-	<div id="sar_select" class="head_select">
-		<ul></ul>
-	</div>
-	<div id="log_select" class="head_select">
-		<ul></ul>
-	</div>
-	<div id="node_select" class="head_select">
+	<div id="time_select" index=1 class="head_select">
 		<table></table>
+	</div>
+	<div id="sar_select" index=2 class="head_select">
+		<ul></ul>
+	</div>
+	<div id="log_select" index=3 class="head_select">
+		<ul></ul>
 	</div>
 	<div id="central_panel">
 		<div id="sar_canvas">
@@ -42,5 +42,6 @@
 	</div>
 	</div>
 	<script src="function.js"></script>
+	<script src="drawCanvas.js"></script>
 </body>
 </html>

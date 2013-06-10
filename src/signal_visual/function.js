@@ -2,119 +2,15 @@ var current_node_index = 0;
 var current_day_index = 0;
 var current_log_index = 0;
 var current_sar_index = 0;
-var log_draw=document.getElementById("log_draw");
-var sar_draw=document.getElementById("sar_draw");
-var log_context = log_draw.getContext("2d");
-var sar_context = sar_draw.getContext("2d");
-var canvas_size={width:1000,height:250};
-var border_left = 50;
-var border_bottom = 20;
-var inside_width = 900;
-var inside_height = 200;
-function position_inside(x,y) {
-	x = border_left + x*(inside_width);
-	y = canvas_size.height - border_bottom - y*(inside_height);
-	console.warn(x,y);
-	return {'x':x,'y':y};
-}
-function draw_base_line(max,min) {
-	
-}
-function draw_sar(){
-	sar_draw.width = canvas_size.width;
-	sar_draw.height = canvas_size.height;
-	
-  findAll('Sar_signal', nodes[current_node_index], 
-  	{'logTime':{'$gte':time.start_time+current_day_index*seconds_in_day,
-  							'$lte':time.start_time+(current_day_index+1)*seconds_in_day},
-  	 'tempID':sars[current_sar_index].pos}, 
-  	{'logTime':1},{'logTime':1},function(vector){
-  		for(var i = 1; i < vector.length; i++) {
-		  		var square_width = 10*60/seconds_in_day;
-	  			var x = (vector[i]['logTime'] - time.start_time - current_day_index*seconds_in_day)/seconds_in_day;
-					sar_context.fillStyle = "rgba(0,189,0,0.5)";
-	  			var inside_pos_1 = position_inside(x-square_width/2,1);
-	  			var inside_pos_2 = position_inside(x+square_width/2,0);
-	  			sar_context.fillRect(inside_pos_1.x,inside_pos_1.y,
-	  				inside_pos_2.x-inside_pos_1.x,inside_pos_2.y-inside_pos_1.y);
-  		}
-  	});
-  if(sars[current_sar_index].neg>=0) {
-  	findAll('Sar_signal', nodes[current_node_index], 
-	  	{'logTime':{'$gte':time.start_time+current_day_index*seconds_in_day,
-	  							'$lte':time.start_time+(current_day_index+1)*seconds_in_day},
-	  	 'tempID':sars[current_sar_index].neg}, 
-	  	{'logTime':1},{'logTime':1},function(vector){
-	  		for(var i = 1; i < vector.length; i++) {
-		  		var square_width = 10*60/seconds_in_day;
-	  			var x = (vector[i]['logTime'] - time.start_time - current_day_index*seconds_in_day)/seconds_in_day;
-					sar_context.fillStyle = "rgba(0,0,189,0.5)";
-	  			var inside_pos_1 = position_inside(x-square_width/2,1);
-	  			var inside_pos_2 = position_inside(x+square_width/2,0);
-	  			sar_context.fillRect(inside_pos_1.x,inside_pos_1.y,
-	  				inside_pos_2.x-inside_pos_1.x,inside_pos_2.y-inside_pos_1.y);
-	  		}
-	  	});
-  }
-  var line = 'var fields = {\''+sars[current_sar_index].id1+'.'+sars[current_sar_index].id2+'\':1};';
-  console.warn(line);
-  eval(line);
-  findAll('Sar', nodes[current_node_index], 
-  	{'_id':{'$gte':time.start_time+current_day_index*seconds_in_day,
-  							'$lte':time.start_time+(current_day_index+1)*seconds_in_day}}, 
-  		fields,{'_id':1},function(vector){
-  			var max = 0;
-  			for(var i = 0; i < vector.length; i++) {
-  				var target = vector[i];
-	  			if(target[sars[current_sar_index].id1]!=undefined && 
-	  				target[sars[current_sar_index].id1][sars[current_sar_index].id2]!=undefined) {
-	  				var value = target[sars[current_sar_index].id1][sars[current_sar_index].id2];
-	  				if(value > max) {max = value;}
-	  			}
-  			}
-  			console.warn("max："+max);
-  			if(max == 0) {max = 10;}
-				sar_context.fillStyle = "rgba(247,189,64,0.4)";
-				sar_context.strokeStyle="red";
-    		sar_context.lineWidth="0.5";
-				var grd=sar_context.createRadialGradient(5,5,1,7,7,3);
-				grd.addColorStop(0,"red");
-				grd.addColorStop(1,"rgba(0,0,0,0)");
-  			for(var i = 0; i < vector.length; i++) {
-  				var target = vector[i];
 
-  				var cur_time = target['_id'];
-  				var x = (cur_time - time.start_time - current_day_index*seconds_in_day)/seconds_in_day;
-  				var y = 0;
-	  			if(target[sars[current_sar_index].id1]!=undefined && 
-	  				target[sars[current_sar_index].id1][sars[current_sar_index].id2]!=undefined) {
-	  				var value = target[sars[current_sar_index].id1][sars[current_sar_index].id2];
-	  				y = value/max;
-	  			}
-	  			var inside_pos = position_inside(x,y);
-				sar_context.strokeStyle="red";
-	  			if(i==0){
-    				sar_context.moveTo(inside_pos.x,inside_pos.y);
-    			} else {
-    				sar_context.lineTo(inside_pos.x,inside_pos.y);
-    			}
-    			//sar_context.fillStyle=grd;
-					sar_context.fillRect(inside_pos.x-2,inside_pos.y-2,4,4);
-  			}
-				sar_context.strokeStyle="red";
-    		sar_context.stroke();
-  	});
-}
-function draw_log(){
-	sar_context.clearRect(0,0,canvas_size.width,canvas_size.height);
-	log_context.fillStyle = "rgba(0,189,64,0.4)";
-  log_context.fillRect(0,0,300,300);
-}
+var current_frame_id = 0;
+
 function reinit_node_day_log_sar(){
-	var day_text = $("#time_display");
-	var node_text = $("#node_display");
-	var sar_text = $("#sar_display");
-	var log_text = $("#log_display");
+	current_frame_id++;
+	var day_text = $("#time_display span");
+	var node_text = $("#node_display span");
+	var sar_text = $("#sar_display span");
+	var log_text = $("#log_display span");
 	day_text.empty();
 	node_text.empty();
 	sar_text.empty();
@@ -127,37 +23,33 @@ function reinit_node_day_log_sar(){
 	sar_text.append(sar_cell.id1+'.'+sar_cell.id2);
 	var log_cell = logs[current_log_index];
 	log_text.append(log_cell.db+':'+log_cell.index);
-	draw_sar();
-	draw_log();
+	draw_sar(current_frame_id);
+	draw_log(current_frame_id);
 }
 function load_nodes_abstraction(){
 
 }
+var current_select = -1;
+var selects = [$("#node_select"),$("#time_select"),$("#sar_select"),$("#log_select")];
 $(document).ready(function(){
-	sar_context.webkitImageSmoothingEnabled = true;
-	$("#time_display").click(function(){
-		$("#node_select").slideUp();
-		$("#log_select").slideUp();
-		$("#sar_select").slideUp();
-		$("#time_select").slideToggle();
+	$(".head_display span").click(function(){
+		var cur_index = $(this).attr('index');
+		if(current_select!=-1 && cur_index != current_select){
+			selects[current_select].css({'display':'none'});
+		} else if(current_select == cur_index) {
+			selects[current_select].css({'display':'none'});
+			current_select = -1;
+			return;
+		}
+		current_select = cur_index;
+		selects[current_select].css({'display':'block'});
+
 	});
-	$("#node_display").click(function(){
-		$("#log_select").slideUp();
-		$("#sar_select").slideUp();
-		$("#time_select").slideUp();
-		$("#node_select").slideToggle();
-	});
-	$("#log_display").click(function(){
-		$("#node_select").slideUp();
-		$("#sar_select").slideUp();
-		$("#time_select").slideUp();
-		$("#log_select").slideToggle();
-	});
-	$("#sar_display").click(function(){
-		$("#node_select").slideUp();
-		$("#log_select").slideUp();
-		$("#time_select").slideUp();
-		$("#sar_select").slideToggle();
+	$(".head_display").click(function(e){
+		if(e.target == e.currentTarget && current_select >= 0){
+			selects[current_select].css({'display':'none'});
+			current_select = -1;
+		}
 	});
 	load_nodes();
 	load_days();
@@ -167,7 +59,7 @@ $(document).ready(function(){
 ////////////////////////////////
 function load_nodes(){
 	var str_in_selector = "<tr>";
-	var cell_in_line = 20;
+	var cell_in_line = 10;
 	var line_index = 0;
 	for(var i = 0; i < nodes.length; i++) {
 		if(line_index == cell_in_line) {
@@ -186,7 +78,7 @@ function load_nodes(){
 }
 function load_days(){
 	var str_in_selector = "<tr>";
-	var cell_in_line = 20;
+	var cell_in_line = 10;
 	var line_index = 0;
 	var last_month = -1;
 	for(var i = 0; i<time.days;i++) {
@@ -238,7 +130,7 @@ function load_sars(){
 });
 jQuery.support.cors = true;
  
-var databaseUrl= "http://192.168.1.100:27080";
+var databaseUrl= "http://166.111.69.24:27080";
 ///////////////////////////////////////////////////////////////////////
 //MongoDB
 function findOne(db, collection, criteria, fields, sort, foreach_function) {
