@@ -30,7 +30,7 @@ while (my $object = $data->next()) {
 	my $event_time = $object->{eventTime};
 	my $submit_time = $object->{submitTime};
 	$start_time = $object->{submitTime}if ($object->{submitTime} > $start_time);
-	if ($event_time - $start_time < 30) {$time_trash_job_num ++; next;}#the time constraint
+	#if ($event_time - $start_time < 30) {$time_trash_job_num ++; next;}#the time constraint
 	my $uniq_hosts = {};
 	foreach (@$execHosts) {$uniq_hosts->{$_} = 1;}
 	my $jStatus = ${$object}{"jStatus"};

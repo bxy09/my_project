@@ -124,8 +124,10 @@ foreach my $i(0..$#signals){
 	printf "sig:%10s count:%10d ","$signals[$i]->{db}:$signals[$i]->{tempID}",$count->[$i];
 	foreach my $j(0..$#signals){
 		if(print_cov_cell($i,$j)>0.8 and $cov_mat->[$i][$j] > 20) {
-			if($j>$i and get_cov_cell($j,$i) > 0.8) {
-				push @$double_big_ratio,[$i,$j];
+			if(get_cov_cell($j,$i) > 0.8) {
+				if($j>$i) {
+					push @$double_big_ratio,[$i,$j];
+				}
 			} else {
 				push @$big_ratio_couple,[$i,$j];
 			}
