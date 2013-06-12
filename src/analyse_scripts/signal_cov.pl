@@ -119,11 +119,16 @@ foreach (@read_pool){
 }
 #print
 my $big_ratio_couple = [];
+my $double_big_ratio = [];
 foreach my $i(0..$#signals){
 	printf "sig:%10s count:%10d ","$signals[$i]->{db}:$signals[$i]->{tempID}",$count->[$i];
 	foreach my $j(0..$#signals){
-		if(print_cov_cell($i,$j)>0.8) {
-			push @$big_ratio_couple,[$i,$j];
+		if(print_cov_cell($i,$j)>0.8 and $cov_mat->[$i][$j] > 20) {
+			if($j>$i and get_cov_cell($j,$i) > 0.8) {
+				push @$double_big_ratio,[$i,$j];
+			} else {
+				push @$big_ratio_couple,[$i,$j];
+			}
 		}
 	}
 	print "\n";
@@ -134,6 +139,18 @@ foreach my $couple (@$big_ratio_couple) {
 	printf "sig:%10s count:%10d ","$signals[$i]->{db}:$signals[$i]->{tempID}",$count->[$i];
 	printf "sig:%10s count:%10d ","$signals[$j]->{db}:$signals[$j]->{tempID}",$count->[$j];
 	print_cov_cell($i,$j);
+	printf " ";
+	print_cov_cell($j,$i);
+	print "\n";
+}
+print "double::::::\n";
+foreach my $couple (@$double_big_ratio) {
+	my ($i,$j) = @$couple;
+	printf "sig:%10s count:%10d ","$signals[$i]->{db}:$signals[$i]->{tempID}",$count->[$i];
+	printf "sig:%10s count:%10d ","$signals[$j]->{db}:$signals[$j]->{tempID}",$count->[$j];
+	print_cov_cell($i,$j);
+	printf " ";
+	print_cov_cell($j,$i);
 	print "\n";
 }
 #####################################################
@@ -147,12 +164,20 @@ sub read_records {
 		my $i_cursor= $i_handle->get_collection($node)->find({'tempID'=>$signals[$i]->{tempID}},{'logTime'=>1})->sort({'logTime'=>1});
 		my @node_records_vec;
 		my $time = 0;
+		my $last_trash_time = 0;
 		while(my $i_record = $i_cursor->next()) {
 			if($i_record->{logTime}-$time<10*60) {
-				next;
+				$last_trash_time = $i_record->{logTime};
+			} else {
+				if($last_trash_time != 0) {
+					if($i_record->{logTime}-$time>12*60) {
+						push @node_records_vec,$last_trash_time;
+					}
+					$last_trash_time = 0;
+				}
+				$time = $i_record->{logTime};
+				push @node_records_vec,$time;
 			}
-			$time = $i_record->{logTime};
-			push @node_records_vec,$time;
 		}
 		#print "i:$i produce ".scalar(@node_records_vec)."\n";
 		$read_back_queue->enqueue(($i,scalar(@node_records_vec),@node_records_vec));
@@ -194,6 +219,16 @@ sub count_cov {
 		$cov_mat->[$i][$j] += $ret_val;
 	}
 	#print "thread $thread_no exit!!\n";
+}
+sub get_cov_cell{
+	my ($i,$j) = @_;
+	my $ratio = 0;
+	if($count->[$i]==0) {
+		$ratio = 0;
+	}else {
+		$ratio = $cov_mat->[$i][$j]/$count->[$i];
+	}
+	return $ratio;
 }
 sub print_cov_cell{
 	my ($i,$j) = @_;
