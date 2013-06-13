@@ -58,8 +58,9 @@ function draw_sar(frame_id){
   							'$lte':time.start_time+(current_day_index+1)*seconds_in_day},
   	 'tempID':sars[current_sar_index].pos}, 
   	{'logTime':1},{'logTime':1},function(vector){
+      console.warn(vector);
   		if(current_frame_id != frame_id) {return;}
-  		for(var i = 1; i < vector.length; i++) {
+  		for(var i = 0; i < vector.length; i++) {
 		  		var square_width = 10*60/seconds_in_day;
 	  			var x = (vector[i]['logTime'] - time.start_time - current_day_index*seconds_in_day)/seconds_in_day;
 					sar_context.fillStyle = "rgba(0,189,0,0.5)";
@@ -76,7 +77,7 @@ function draw_sar(frame_id){
 	  	 'tempID':sars[current_sar_index].neg}, 
 	  	{'logTime':1},{'logTime':1},function(vector){
 	  		if(current_frame_id != frame_id) {return;}
-	  		for(var i = 1; i < vector.length; i++) {
+	  		for(var i = 0; i < vector.length; i++) {
 		  		var square_width = 10*60/seconds_in_day;
 	  			var x = (vector[i]['logTime'] - time.start_time - current_day_index*seconds_in_day)/seconds_in_day;
 					sar_context.fillStyle = "rgba(0,0,189,0.5)";
@@ -107,7 +108,8 @@ function draw_sar(frame_id){
 	  				min = 0;
 	  			}
   			}
-  			if(max == 0) {max = 10;}
+  			//if(max == 0) {max = 10;}
+        if(min == max) {max += 10;}
   			max = 1*max;min = 1*min;
   			draw_base_line(sar_context,max,min);
   			sar_context.beginPath();
@@ -155,7 +157,7 @@ function draw_log(frame_id){
   	{'submitTime':1}
   	,function(vector){
   		if(current_frame_id != frame_id) {return;}
-  		for(var i = 1; i < vector.length; i++) {
+  		for(var i = 0; i < vector.length; i++) {
   			var start_time = vector[i]['startTime'];
   			if(start_time < vector[i]['submitTime']) {
   				start_time = submitTime;
@@ -170,14 +172,19 @@ function draw_log(frame_id){
   			var inside_pos_1 = position_inside(x1,1);
   			var inside_pos_2 = position_inside(x2,0);
   			if(vector[i]['jStatus'] == 64){
-				log_context.fillStyle = "rgba(255,0,0,0.2)";
+				  log_context.fillStyle = "rgba(255,0,0,0.5)";
+          log_context.fillRect(inside_pos_1.x,inside_pos_1.y,
+            inside_pos_2.x-inside_pos_1.x,10);
   			} else if(vector[i]['exitInfo'] == 0){
-				log_context.fillStyle = "rgba(0,0,255,0.2)";
+				  log_context.fillStyle = "rgba(0,0,255,0.5)";
+          log_context.fillRect(inside_pos_1.x,inside_pos_1.y+20,
+            inside_pos_2.x-inside_pos_1.x,10);
   			} else {
-				log_context.fillStyle = "rgba(0,255,0,0.2)";
+				  log_context.fillStyle = "rgba(0,255,0,0.5)";
+          log_context.fillRect(inside_pos_1.x,inside_pos_1.y+10,
+            inside_pos_2.x-inside_pos_1.x,10);
   			}
-  			log_context.fillRect(inside_pos_1.x,inside_pos_1.y,
-  				inside_pos_2.x-inside_pos_1.x,inside_pos_2.y-inside_pos_1.y);
+  			
   		}
   	});
  	var log_cell = logs[current_log_index];

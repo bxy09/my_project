@@ -46,11 +46,16 @@ body{
 .head_select{
 	display: none;
 	overflow: hidden;
+	position: absolute;
+	font-family:Arial, Helvetica, sans-serif;;
 }
 #head_select{
+	position: relative;
+	top:0px;
 	height: 0px;
 	margin-left: auto;
 	margin-right: auto;
+	padding:0px 20px 0px 20px;
 	width : 940px;
 	background-color: #fff;
 	font-size: 14px;
@@ -70,20 +75,49 @@ body{
 	float:none;
 	overflow: auto;
 }
+.cursor_rail{
+	height: 0px;
+	overflow: hidden;
+}
+.cursor{
+	background-image: url(cursor.png);
+	width: 30px;
+	height: 20px;
+}
 .head_select table{
-	margin-top:20px;
-	margin-bottom:20px;
-	margin-left: auto;
-	margin-right: auto;
 	width : 920px;
 }
-.head_select td:hover{
+.head_select [index]{
+	background-color: none;/*rgb(50,50,50);*/
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	-khtml-border-radius: 4px;
+}
+.head_select [index]:hover{
 	color: #fff;
 	text-shadow:black 0 1px 3px;
 }
+.separator{
+	color: #fff;
+	text-shadow:black 0 1px 3px;
+	padding-right: 50px;
+	float:none;
+}
+#sar_select .cell{
+	float:left;
+	margin: 5px 10px 0px 10px;
+	width:285px;
+}
+.head_select span[index]{
+	margin-right: 20px;
+	padding: 1px 5px 1px 5px;
+	display:inline-block;
+}
 #node_display{
 	float:left;
-	width:100px;
+	width:200px;
 }
 #time_display{
 	float:left;
@@ -91,11 +125,11 @@ body{
 }
 #sar_display{
 	float:left;
-	width:700px;
+	width:500px;
 }
 #log_display{
 	float:none;
-	width:100px;
+	width:200px;
 }
 li{
 	background-color: inherit;
@@ -137,6 +171,7 @@ table span{
 .light_group{
 	float:left;
 	margin: auto;
+	padding:auto;
 	height: 14px;
 	width: 21px;
 	margin-right: 2px;
