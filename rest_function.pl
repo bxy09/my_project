@@ -19,7 +19,7 @@ close NODE;
 
 my ($start_time,$day_count,$sar_pos,$sar_neg,$log_db,$log_tempID) = @ARGV;
 
-($start_time,$day_count,$sar_pos,$sar_neg,$log_db,$log_tempID) = (1366819200,1,37,38,'lim',0);
+($start_time,$day_count,$sar_pos,$sar_neg,$log_db,$log_tempID) = (1366819200,31,37,38,'sbatchd',2);
 	my %answer:shared;
 	print "ininin\n";
 	my $index = 0;
@@ -42,7 +42,7 @@ $read_queue->end;
 foreach (@read_pool){
 	$_->join;
 }
-	print Dumper(\%answer);
+print Dumper(\%answer);
 
 sub get_node_abstraction {
 	my ($answer,$read_queue,$start_time,$day_count,$sar_pos,$sar_neg,$log_db,$log_tempID)= @_;
@@ -68,6 +68,11 @@ sub get_node_abstraction {
 			$log_signal_db->get_collection($node)->
 				count({'tempID'=>$log_tempID,
 				'logTime'=>{'$gte'=>$start_time,'$lte'=>$end_time}});
+
+		if($answer->{$node}{log} != 0) {
+			print "nenenene";
+		}
+		next;
 		#get_job
 		$answer->{$node}{job} = 
 			$job_db->get_collection('JobAssign')->
