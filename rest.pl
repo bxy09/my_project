@@ -103,7 +103,6 @@ get '/days_abstract' => sub {
 	return to_json(\@answer);
 };
 
-open LOG,">log.log";
 sub get_log_abstraction {
 	my ($answer,$read_queue,$time,$node)= @_;
 	my $start_time = $time;

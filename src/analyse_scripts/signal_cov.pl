@@ -168,11 +168,11 @@ sub read_records {
 		my $time = 0;
 		my $last_trash_time = 0;
 		while(my $i_record = $i_cursor->next()) {
-			if($i_record->{logTime}-$time<10*60) {
+			if($i_record->{logTime}-$time<5*60) {
 				$last_trash_time = $i_record->{logTime};
 			} else {
 				if($last_trash_time != 0) {
-					if($i_record->{logTime}-$time>12*60) {
+					if($i_record->{logTime}-$time>6*60) {
 						push @node_records_vec,$last_trash_time;
 					}
 					$last_trash_time = 0;
