@@ -349,8 +349,8 @@ function load_sars(){
 });
 jQuery.support.cors = true;
  
-var databaseUrl= "http://166.111.69.24:27080";
-var restUrl= "http://166.111.69.24:3000";
+var databaseUrl= "http://166.111.69.20:27080";
+var restUrl= "http://166.111.69.20:3000";
 ///////////////////////////////////////////////////////////////////////
 //MongoDB
 function findOne(db, collection, criteria,foreach_function) {

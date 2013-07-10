@@ -1,0 +1,5 @@
+import breeze.linalg._
+object main extends App {
+	val x = DenseVector.zeros[Double](5)
+	println x
+}
