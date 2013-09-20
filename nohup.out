@@ -1,2 +1,6 @@
 >> Dancer 1.3115 server 17486 listening on http://0.0.0.0:3000
 == Entering the development dance floor ...
+>> Dancer 1.3115 server 8848 listening on http://0.0.0.0:3000
+bind to 0.0.0.0:3000: 地址已在使用 at /usr/local/share/perl/5.14.2/Dancer.pm line 484.
+>> Dancer 1.3115 server 10458 listening on http://0.0.0.0:3000
+== Entering the development dance floor ...

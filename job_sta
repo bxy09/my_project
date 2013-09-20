@@ -1,0 +1,617 @@
+haojm 144 38 1
+zhdy 240 0 7
+wangzhe 82784 3210 16558
+szg1 173 0 1
+dayabay 3987 865 1990
+szg 415 1 4
+ygw 992 1 12
+cnmm 105 1 32
+yugang 178 0 0
+zhengqs 298 6 42
+hxm 191 2 37
+cuigx 294 11 10
+liuhw 223 22 6
+panxm 407 43 1
+songs 1003 7 148
+wangxg_cp 635 0 6
+liqa 104 0 1
+wangbin 293 1 3
+yutao 1165 20 102
+$VAR1 = {
+          'yangch' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 1
+                    },
+          'ludnp' => {
+                     'in_sig_count' => 1,
+                     'around_sig_count' => 0,
+                     'count' => 39
+                   },
+          'litong' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 2,
+                      'count' => 32
+                    },
+          'xzh' => {
+                   'in_sig_count' => 0,
+                   'around_sig_count' => 0,
+                   'count' => 1
+                 },
+          'cyangzl' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 11
+                     },
+          'haojm' => {
+                     'in_sig_count' => 38,
+                     'around_sig_count' => 1,
+                     'count' => 144
+                   },
+          'tccl05' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 20
+                    },
+          'gonghp' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 28
+                    },
+          'khluo-b' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 11
+                     },
+          'liuli' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 10
+                   },
+          'zhdy' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 7,
+                    'count' => 240
+                  },
+          'wangkan' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 12
+                     },
+          'xueweib' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 2,
+                       'count' => 49
+                     },
+          'tccl07' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 8
+                    },
+          'zhoujkf' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 1
+                     },
+          'yanning' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 5
+                     },
+          'wangzhe' => {
+                       'in_sig_count' => 3210,
+                       'around_sig_count' => 16558,
+                       'count' => 82784
+                     },
+          'szg1' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 1,
+                    'count' => 173
+                  },
+          'luoj' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 1,
+                    'count' => 27
+                  },
+          'youxq' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 2,
+                     'count' => 51
+                   },
+          'dayabay' => {
+                       'in_sig_count' => 865,
+                       'around_sig_count' => 1990,
+                       'count' => 3987
+                     },
+          'lund1' => {
+                     'in_sig_count' => 3,
+                     'around_sig_count' => 0,
+                     'count' => 23
+                   },
+          'crenj' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 9
+                   },
+          'zhangxue' => {
+                        'in_sig_count' => 8,
+                        'around_sig_count' => 6,
+                        'count' => 57
+                      },
+          'wujian' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 1
+                    },
+          'ygw_c' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 5
+                   },
+          'xiaozx' => {
+                      'in_sig_count' => 3,
+                      'around_sig_count' => 6,
+                      'count' => 71
+                    },
+          'hujian' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 9
+                    },
+          'songyx' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 1,
+                      'count' => 27
+                    },
+          'xuzp' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 2,
+                    'count' => 68
+                  },
+          'liuhh' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 1,
+                     'count' => 32
+                   },
+          'qiuy' => {
+                    'in_sig_count' => 5,
+                    'around_sig_count' => 7,
+                    'count' => 29
+                  },
+          'wangd' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 29
+                   },
+          'khluo-c' => {
+                       'in_sig_count' => 5,
+                       'around_sig_count' => 0,
+                       'count' => 13
+                     },
+          'fanghw' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 1,
+                      'count' => 3
+                    },
+          'khluo-d' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 2
+                     },
+          'tans' => {
+                    'in_sig_count' => 5,
+                    'around_sig_count' => 9,
+                    'count' => 27
+                  },
+          'xuzp_c' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 8
+                    },
+          '310734' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 1,
+                      'count' => 5
+                    },
+          'zhangq' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 4,
+                      'count' => 48
+                    },
+          'gaoning' => {
+                       'in_sig_count' => 1,
+                       'around_sig_count' => 3,
+                       'count' => 25
+                     },
+          'xuewei' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 1,
+                      'count' => 52
+                    },
+          'szg' => {
+                   'in_sig_count' => 1,
+                   'around_sig_count' => 4,
+                   'count' => 415
+                 },
+          'youcf' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 1,
+                     'count' => 27
+                   },
+          'caoby' => {
+                     'in_sig_count' => 21,
+                     'around_sig_count' => 0,
+                     'count' => 29
+                   },
+          'liujw' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 3,
+                     'count' => 51
+                   },
+          'zhzg' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 18
+                  },
+          'ygw' => {
+                   'in_sig_count' => 1,
+                   'around_sig_count' => 12,
+                   'count' => 992
+                 },
+          'khluo-a' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 1,
+                       'count' => 31
+                     },
+          'ludn' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 2,
+                    'count' => 26
+                  },
+          'cnmm' => {
+                    'in_sig_count' => 1,
+                    'around_sig_count' => 32,
+                    'count' => 105
+                  },
+          'fusong' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 37
+                    },
+          'nijun' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 15
+                   },
+          'huyy' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 8
+                  },
+          '310717' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 4,
+                      'count' => 24
+                    },
+          'yugang' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 178
+                    },
+          'shike' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 3
+                   },
+          'zhengqs' => {
+                       'in_sig_count' => 6,
+                       'around_sig_count' => 42,
+                       'count' => 298
+                     },
+          'pengq' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 1,
+                     'count' => 8
+                   },
+          'hxm' => {
+                   'in_sig_count' => 2,
+                   'around_sig_count' => 37,
+                   'count' => 191
+                 },
+          'cshitz' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 2
+                    },
+          'cmaex' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 21
+                   },
+          'duanwh' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 42
+                    },
+          'mtb' => {
+                   'in_sig_count' => 0,
+                   'around_sig_count' => 0,
+                   'count' => 8
+                 },
+          'lijm' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 44
+                  },
+          'nigh' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 31
+                  },
+          'mengam' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 2
+                    },
+          'gongxq' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 1,
+                      'count' => 6
+                    },
+          'cyanc' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 5
+                   },
+          'wangmr' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 9
+                    },
+          'wuzf' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 3
+                  },
+          'songyx1' => {
+                       'in_sig_count' => 1,
+                       'around_sig_count' => 0,
+                       'count' => 6
+                     },
+          'duanyy' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 2,
+                      'count' => 5
+                    },
+          'chencq' => {
+                      'in_sig_count' => 1,
+                      'around_sig_count' => 1,
+                      'count' => 90
+                    },
+          'wangl' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 7
+                   },
+          'cuigx' => {
+                     'in_sig_count' => 11,
+                     'around_sig_count' => 10,
+                     'count' => 294
+                   },
+          'liuhw' => {
+                     'in_sig_count' => 22,
+                     'around_sig_count' => 6,
+                     'count' => 223
+                   },
+          'zhangcs' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 14
+                     },
+          'yuxx' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 48
+                  },
+          'shsj' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 14
+                  },
+          'gwang' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 15
+                   },
+          'panxm' => {
+                     'in_sig_count' => 43,
+                     'around_sig_count' => 1,
+                     'count' => 407
+                   },
+          'xujm' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 4,
+                    'count' => 64
+                  },
+          'linyl' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 1
+                   },
+          'songs' => {
+                     'in_sig_count' => 7,
+                     'around_sig_count' => 148,
+                     'count' => 1003
+                   },
+          'wanghw' => {
+                      'in_sig_count' => 1,
+                      'around_sig_count' => 2,
+                      'count' => 7
+                    },
+          'ctuk' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 7
+                  },
+          'mchen' => {
+                     'in_sig_count' => 2,
+                     'around_sig_count' => 3,
+                     'count' => 53
+                   },
+          'cuigx2' => {
+                      'in_sig_count' => 1,
+                      'around_sig_count' => 0,
+                      'count' => 13
+                    },
+          'training' => {
+                        'in_sig_count' => 0,
+                        'around_sig_count' => 0,
+                        'count' => 2
+                      },
+          'zhumin' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 3
+                    },
+          'cchangc' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 2
+                     },
+          'liliangl' => {
+                        'in_sig_count' => 0,
+                        'around_sig_count' => 0,
+                        'count' => 3
+                      },
+          'liqb' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 2
+                  },
+          'suisf' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 10
+                   },
+          'youxq_f' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 0,
+                       'count' => 16
+                     },
+          'wangxg_cp' => {
+                         'in_sig_count' => 0,
+                         'around_sig_count' => 6,
+                         'count' => 635
+                       },
+          'xufh' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 2
+                  },
+          'xuben' => {
+                     'in_sig_count' => 2,
+                     'around_sig_count' => 2,
+                     'count' => 43
+                   },
+          'wangyx' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 3
+                    },
+          'wangzx' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 2
+                    },
+          'lund' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 1
+                  },
+          'liqa' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 1,
+                    'count' => 104
+                  },
+          'yuhb' => {
+                    'in_sig_count' => 1,
+                    'around_sig_count' => 0,
+                    'count' => 6
+                  },
+          'cuid' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 1,
+                    'count' => 4
+                  },
+          'dongyuan' => {
+                        'in_sig_count' => 0,
+                        'around_sig_count' => 0,
+                        'count' => 68
+                      },
+          'matb' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 24
+                  },
+          'liudm' => {
+                     'in_sig_count' => 0,
+                     'around_sig_count' => 0,
+                     'count' => 35
+                   },
+          'yaow' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 1
+                  },
+          'yurong' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 10
+                    },
+          'lijun' => {
+                     'in_sig_count' => 2,
+                     'around_sig_count' => 8,
+                     'count' => 26
+                   },
+          'zhangxz' => {
+                       'in_sig_count' => 0,
+                       'around_sig_count' => 1,
+                       'count' => 3
+                     },
+          'zjy' => {
+                   'in_sig_count' => 0,
+                   'around_sig_count' => 0,
+                   'count' => 2
+                 },
+          'ryx' => {
+                   'in_sig_count' => 3,
+                   'around_sig_count' => 1,
+                   'count' => 86
+                 },
+          'wangbin' => {
+                       'in_sig_count' => 1,
+                       'around_sig_count' => 3,
+                       'count' => 293
+                     },
+          'cliumx' => {
+                      'in_sig_count' => 1,
+                      'around_sig_count' => 26,
+                      'count' => 57
+                    },
+          'jinf' => {
+                    'in_sig_count' => 0,
+                    'around_sig_count' => 0,
+                    'count' => 9
+                  },
+          'wangjd' => {
+                      'in_sig_count' => 0,
+                      'around_sig_count' => 0,
+                      'count' => 9
+                    },
+          'yutao' => {
+                     'in_sig_count' => 20,
+                     'around_sig_count' => 102,
+                     'count' => 1165
+                   }
+        };
+95703 4295 19074
