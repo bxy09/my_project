@@ -2,3 +2,4 @@
 bin
 raw_data
 *.tmp
+src/visualNode
