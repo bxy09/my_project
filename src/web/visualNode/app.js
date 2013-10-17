@@ -31,6 +31,7 @@ if ('development' === app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/sar', routes.sar);
+app.get(/^\/db\/((.|\?)*)/, routes.db);
 
 http.createServer(app).listen(app.get('port'), function () {
   "use strict";
