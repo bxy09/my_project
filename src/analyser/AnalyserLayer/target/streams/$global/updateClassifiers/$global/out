@@ -1247,3 +1247,50 @@
 [0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-javadoc.jar[0m
 [0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-javadoc.jar ...[0m
 [0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-javadoc.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-javadoc.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-javadoc.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scala-lang#jline;2.10.2!jline.jar(doc) (8022ms)[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-sources.jar[0m
+[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-sources.jar ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-sources.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-sources.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scala-lang/jline/2.10.2/jline-2.10.2-sources.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scala-lang#jline;2.10.2!jline.jar(src) (1978ms)[0m
+[0m[[0mdebug[0m] [0m		tried /Users/bxy/.ivy2/local/org.fusesource.jansi/jansi/1.4/srcs/jansi-sources.jar[0m
+[0m[[0mdebug[0m] [0m		tried /Users/bxy/.ivy2/local/org.fusesource.jansi/jansi/1.4/docs/jansi-javadoc.jar[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar[0m
+[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.fusesource.jansi#jansi;1.4!jansi.jar(src) (1947ms)[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar[0m
+[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.fusesource.jansi#jansi;1.4!jansi.jar(doc) (4388ms)[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 595ms :: artifacts dl 1469997ms[0m
+[0m[[33mwarn[0m] [0m	::::::::::::::::::::::::::::::::::::::::::::::[0m
+[0m[[33mwarn[0m] [0m	::              FAILED DOWNLOADS            ::[0m
+[0m[[33mwarn[0m] [0m	:: ^ see resolution messages for details  ^ ::[0m
+[0m[[33mwarn[0m] [0m	::::::::::::::::::::::::::::::::::::::::::::::[0m
+[0m[[33mwarn[0m] [0m	:: org.mongodb#casbah_2.10;2.6.2!casbah_2.10.jar(src)[0m
+[0m[[33mwarn[0m] [0m	:: org.mongodb#casbah_2.10;2.6.2!casbah_2.10.jar[0m
+[0m[[33mwarn[0m] [0m	:: org.mongodb#casbah_2.10;2.6.2!casbah_2.10.jar(doc)[0m
+[0m[[33mwarn[0m] [0m	:: org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar(doc)[0m
+[0m[[33mwarn[0m] [0m	::::::::::::::::::::::::::::::::::::::::::::::[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT compile produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT runtime produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT test produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT provided produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT optional produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT compile-internal produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT runtime-internal produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT test-internal produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT plugin produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT sources produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT docs produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT pom produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#analyserlayer$sources_javadoc_2.10;0.1-SNAPSHOT scala-tool produced in /Users/bxy/CodeWork/my_project/src/analyser/AnalyserLayer/target/resolution-cache/reports/default-analyserlayer$sources_javadoc_2.10-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (595ms resolve - 1469997ms download)[0m
