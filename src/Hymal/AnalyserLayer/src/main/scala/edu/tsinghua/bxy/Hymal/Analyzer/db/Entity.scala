@@ -1,5 +1,6 @@
 package edu.tsinghua.bxy.Hymal.Analyzer.db
 import edu.tsinghua.bxy.Hymal.Analyzer.Util._
+import com.mongodb.casbah.Imports._
 
 trait Entity {
 	def toDBObject:DBObject

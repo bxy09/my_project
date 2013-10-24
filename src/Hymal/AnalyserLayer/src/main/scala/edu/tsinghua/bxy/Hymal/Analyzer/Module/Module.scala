@@ -1,4 +1,5 @@
 package edu.tsinghua.bxy.Hymal.Analyzer.Module
+import scala.annotation.tailrec
 import edu.tsinghua.bxy.Hymal.Analyzer.db.{NodeEndMark, NodeAbstractionRecord}
 
 trait Module {

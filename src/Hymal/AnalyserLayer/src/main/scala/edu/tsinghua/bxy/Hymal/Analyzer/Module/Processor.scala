@@ -2,6 +2,7 @@ package edu.tsinghua.bxy.Hymal.Analyzer.Module
 
 import edu.tsinghua.bxy.Hymal.Analyzer.db._
 import edu.tsinghua.bxy.Hymal.Global.Setting
+import scala.annotation.tailrec
 
 
 /**

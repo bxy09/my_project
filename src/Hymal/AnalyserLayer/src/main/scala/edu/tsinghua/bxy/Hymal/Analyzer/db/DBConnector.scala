@@ -1,4 +1,6 @@
 package edu.tsinghua.bxy.Hymal.Analyzer.db
+
+import com.mongodb.casbah.Imports._
 import edu.tsinghua.bxy.Hymal.Global.Setting
 
 trait DBConnector {

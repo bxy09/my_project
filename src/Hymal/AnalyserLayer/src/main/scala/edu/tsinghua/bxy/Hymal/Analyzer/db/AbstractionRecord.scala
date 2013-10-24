@@ -1,4 +1,5 @@
 package edu.tsinghua.bxy.Hymal.Analyzer.db
+import com.mongodb.casbah.Imports._
 
 
 abstract class EndMark(_startTime:Int, _endTime:Int) extends Entity with DBUpdateable {

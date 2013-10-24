@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WebService/WebService.iml" filepath="$PROJECT_DIR$/WebService/WebService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AnalyserLayer/src/main/main.iml" filepath="$PROJECT_DIR$/AnalyserLayer/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WebService/target/scala-2.10/src_managed/src_managed.iml" filepath="$PROJECT_DIR$/WebService/target/scala-2.10/src_managed/src_managed.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AnalyserLayer/src/test/test.iml" filepath="$PROJECT_DIR$/AnalyserLayer/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea_modules/AnalyserLayer.iml" filepath="$PROJECT_DIR$/.idea_modules/AnalyserLayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea_modules/Hymal.iml" filepath="$PROJECT_DIR$/.idea_modules/Hymal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea_modules/Hymal-build.iml" filepath="$PROJECT_DIR$/.idea_modules/Hymal-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea_modules/WebService.iml" filepath="$PROJECT_DIR$/.idea_modules/WebService.iml" />
     </modules>
   </component>
 </project>
