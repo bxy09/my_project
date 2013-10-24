@@ -8,8 +8,7 @@ object Application extends Controller {
 
   lazy val sarReader = new NodeRecordReader("Sar", SarRecord)
   def index = Action {
-    Ok(sarReader.getCollectionsOfNodes.mkString(":"))
-    //Ok(views.html.index("Your new application is ready."))
+    Ok(views.html.index("Your new application is ready."))
   }
 
 }
