@@ -22,7 +22,7 @@ function reinit_node_day_log_sar() {
     node_text = $("#node_display span"),
     sar_text = $("#sar_display span"),
     log_text = $("#log_display span"),
-    date = timestamp_to_month_day(time.start_time + current_day_index * seconds_in_day);
+    date = timestamp_to_month_day(days[current_day_index]);
   day_text.empty();
   node_text.empty();
   sar_text.empty();
@@ -52,60 +52,58 @@ function start_nodes_all() {
   $("#node_select").find("td[index]").find("#3").attr('light_color', 'black');
   $("#node_select").find("td[index]").find("#4").attr('light_color', 'black');
   $("#node_select").find("td[index]").find("#5").attr('light_color', 'black');
-  jQuery.ajax(restUrl + '/nodes_abstract?' +
-    'start_time=' + encodeURI(time.start_time) +
-    '&day_count=' + encodeURI(time.days) +
-    '&sar_pos=' + encodeURI(sars[current_sar_index].pos) +
-    '&sar_neg=' + encodeURI(sars[current_sar_index].neg) +
-    '&log_db=' + encodeURI(logs[current_log_index].db) +
-    '&log_tempID=' + encodeURI(logs[current_log_index].index), {
-    type: 'get',
-    success: function (collections) {
-      for (var key in collections) {
-        var td_cell = $("#node_select").find("td[index='" + nodes_index[key] + "']");
-        if (collections[key]['sar'] > 0) {
-          td_cell.find('#3').attr('light_color', 'red');
-        }
-        if (collections[key]['log'] > 0) {
-          td_cell.find('#4').attr('light_color', 'green');
-        }
-        if (collections[key]['job'] > 0) {
-          td_cell.find('#5').attr('light_color', 'blue');
-        }
-      }
-    }
-  });
+  var current_sar_block = sars[current_sar_index];
+   findAll("Abstraction", "Sar", 
+    {'name':current_sar_block.id1 + current_sar_block.id2 ,'time':0},
+    {'node':1},{'node':1},function(vector){
+      for(var i in vector) {
+        $("#node_select").find("td[name=" + vector[i].node + "]").find('#3').attr('light_color', 'red');
+    }}
+    );
+   findAll("Abstraction", "Log", 
+    {'name':logs[current_log_index].db + logs[current_log_index].index ,'time':0},
+    {'node':1},{'node':1},function(vector){
+      for(var i in vector) {
+        $("#node_select").find("td[name=" + vector[i].node + "]").find('#4').attr('light_color', 'green');
+    }}
+    );
+   findAll("Abstraction", "Job", 
+    {'time':0},
+    {'node':1},{'node':1},function(vector){
+      for(var i in vector) {
+        $("#node_select").find("td[name=" + vector[i].node + "]").find('#5').attr('light_color', 'blue');
+    }}
+    );
+
   return;
 }
 
 function start_nodes() {
-  var current_time = current_day_index * seconds_in_day + time.start_time;
   $("#node_select").find("td[index]").find("#0").attr('light_color', 'black');
   $("#node_select").find("td[index]").find("#1").attr('light_color', 'black');
   $("#node_select").find("td[index]").find("#2").attr('light_color', 'black');
-  jQuery.ajax(restUrl + '/nodes_abstract?' +
-    'start_time=' + encodeURI(current_time) +
-    '&day_count=' + encodeURI(1) +
-    '&sar_pos=' + encodeURI(sars[current_sar_index].pos) +
-    '&sar_neg=' + encodeURI(sars[current_sar_index].neg) +
-    '&log_db=' + encodeURI(logs[current_log_index].db) +
-    '&log_tempID=' + encodeURI(logs[current_log_index].index), {
-    type: 'get',
-    success: function (collections) {
-      for (var key in collections) {
-        var td_cell = $("#node_select").find("td[index='" + nodes_index[key] + "']");
-        if (collections[key]['sar'] > 0) {
-          td_cell.find('#0').attr('light_color', 'red');
-        }
-        if (collections[key]['log'] > 0) {
-          td_cell.find('#1').attr('light_color', 'green');
-        }
-        if (collections[key]['job'] > 0) {
-          td_cell.find('#2').attr('light_color', 'blue');
-        }
-      }
-    }
-  });
+  var current_sar_block = sars[current_sar_index];
+   findAll("Abstraction", "Sar", 
+    {'name':current_sar_block.id1 + current_sar_block.id2 ,'time':days[current_day_index]},
+    {'node':1},{'node':1},function(vector){
+      for(var i in vector) {
+        $("#node_select").find("td[name=" + vector[i].node + "]").find('#0').attr('light_color', 'red');
+    }}
+    );
+   findAll("Abstraction", "Log", 
+    {'name':logs[current_log_index].db + logs[current_log_index].index ,'time':days[current_day_index]},
+    {'node':1},{'node':1},function(vector){
+      for(var i in vector) {
+        $("#node_select").find("td[name=" + vector[i].node + "]").find('#1').attr('light_color', 'green');
+    }}
+    );
+   findAll("Abstraction", "Job", 
+    {'time':days[current_day_index]},
+    {'node':1},{'node':1},function(vector){
+      for(var i in vector) {
+        $("#node_select").find("td[name=" + vector[i].node + "]").find('#2').attr('light_color', 'blue');
+    }}
+    );
   return;
 }
 
@@ -113,65 +111,55 @@ function load_days_abstraction() {
   $("#time_select").find("td[index]").find("#0").attr('light_color', 'black');
   $("#time_select").find("td[index]").find("#1").attr('light_color', 'black');
   $("#time_select").find("td[index]").find("#2").attr('light_color', 'black');
-  jQuery.ajax(restUrl + '/days_abstract?' +
-    'start_time=' + encodeURI(time.start_time) +
-    '&day_count=' + encodeURI(31) +
-    '&sar_pos=' + encodeURI(sars[current_sar_index].pos) +
-    '&sar_neg=' + encodeURI(sars[current_sar_index].neg) +
-    '&log_db=' + encodeURI(logs[current_log_index].db) +
-    '&node=' + encodeURI(nodes[current_node_index]) +
-    '&log_tempID=' + encodeURI(logs[current_log_index].index), {
-    type: 'get',
-    success: function (collections) {
-      for (var i = 0; i < collections.length; i++) {
-        var td_cell = $("#time_select").find("td[index='" + i + "']");
-        if (collections[i]['sar'] > 0) {
-          td_cell.find('#0').attr('light_color', 'red');
-        }
-        if (collections[i]['log'] > 0) {
-          td_cell.find('#1').attr('light_color', 'green');
-        }
-        if (collections[i]['job'] > 0) {
-          td_cell.find('#2').attr('light_color', 'blue');
-        }
-      }
-    }
-  });
+  var current_sar_block = sars[current_sar_index];
+  findAll("Abstraction", "Sar", 
+    {'name':current_sar_block.id1 + current_sar_block.id2 ,'node':nodes[current_node_index]},
+    {'time':1},{'time':1},function(vector){
+      for(var i in vector) {
+      $("#time_select").find("td[time='" + vector[i].time + "']").find('#0').attr('light_color', 'red');
+    }}
+    );
+  findAll("Abstraction", "Log", 
+    {'name': logs[current_log_index].db + logs[current_log_index].index,'node':nodes[current_node_index]},
+    {'time':1},{'time':1},function(vector){
+      for(var i in vector) {
+      $("#time_select").find("td[time='" + vector[i].time + "']").find('#1').attr('light_color', 'green');
+    }}
+    );
+  findAll("Abstraction", "Job", 
+    {'node':nodes[current_node_index]},
+    {'time':1},{'time':1},function(vector){
+      for(var i in vector) {
+      $("#time_select").find("td[time='" + vector[i].time + "']").find('#2').attr('light_color', 'blue');
+    }}
+    );
   return;
 }
 function load_sars_abstraction() {
-  var current_time = current_day_index * seconds_in_day + time.start_time;
   $("#sar_select").find("span[index]").css('color', ' #ddd');
-  jQuery.ajax(restUrl + '/sar_abstract?' +
-    'time=' + encodeURI(current_time) +
-    '&node=' + encodeURI(nodes[current_node_index]), {
-    type: 'get',
-    success: function (collections) {
-      for (var i = 0; i < collections.length; i++) {
-        if (collections[i] > 0) {
-          $("#sar_select").find("span[index='" + sig_to_sar_index[i] + "']")
+
+  findAll("Abstraction", "Sar", 
+    {'node':nodes[current_node_index],'time':days[current_day_index]},
+    {'name':1},{'name':1},function(vector){
+      for(var i in vector) {
+      $("#sar_select").find("span[name='" + vector[i].name + "']")
             .css('color', 'rgb(199,187,58)');
-        }
-      }
-    }
-  });
+    }}
+    );
   return;
 }
 function load_logs_abstraction() {
-  var current_time = current_day_index * seconds_in_day + time.start_time;
   $("#log_select").find("td[index]").css('color', ' #ddd');
-  jQuery.ajax(restUrl + '/log_abstract?' +
-    'time=' + encodeURI(current_time) +
-    '&node=' + encodeURI(nodes[current_node_index]), {
-    type: 'get',
-    success: function (collections) {
-      for (var key in collections) {
-        if (collections[key] <= 0) continue;
-        $("#log_select").find("td[index='" + sig_to_log_index[key] + "']")
-          .css('color', 'rgb(199,187,58)');
-      }
-    }
-  });
+
+  findAll("Abstraction", "Log", 
+    {'node':nodes[current_node_index],'time':days[current_day_index]},
+    {'name':1},{'name':1},function(vector){
+      for(var i in vector) {
+      $("#log_select").find("td[name='" + vector[i].name + "']")
+            .css('color', 'rgb(199,187,58)');
+    }}
+    );
+  
   return;
 }
 var current_select = -1;
@@ -242,7 +230,7 @@ $(document).ready(function () {
         line_index = 0;
         str_in_selector += "</tr><tr>";
       }
-      str_in_selector += "<td index=" + i + ">" + add_light_group(2) + "<span>" + nodes[i] + "</span></td>";
+      str_in_selector += "<td index=" + i + " name=" + nodes[i] +">" + add_light_group(2) + "<span>" + nodes[i] + "</span></td>";
       line_index++;
     }
     str_in_selector += '</tr>';
@@ -267,8 +255,9 @@ $(document).ready(function () {
     var cell_in_line = 20;
     var line_index = 0;
     var last_month = -1;
-    for (var i = 0; i < time.days; i++) {
-      var date = timestamp_to_month_day(time.start_time + i * seconds_in_day);
+    var i = 0;
+    for (var i in days) {
+      var date = timestamp_to_month_day(days[i]);
       if ((line_index == cell_in_line) || (last_month != date.month)) {
         line_index = 0;
         if (last_month != -1) {
@@ -280,8 +269,9 @@ $(document).ready(function () {
         str_in_selector += "<tr>";
       }
       last_month = date.month;
-      str_in_selector += "<td index=" + i + ">" + add_light_group(1) + date.day + "</td>";
+      str_in_selector += "<td index=" + i + " time=" + days[i] +">" + add_light_group(1) + date.day + "</td>";
       line_index++;
+      i ++;
     }
     str_in_selector += '</tr>';
     $("#time_select table").append(str_in_selector);
@@ -306,17 +296,18 @@ $(document).ready(function () {
     var line_index = 0;
     sig_to_log_index = new Object();
     for (var i = 0; i < logs_in.length; i++) {
-      str_in_selector += "<tr class='separator'><td colspan=10>" + logs_in[i].db + "</td></tr><tr>";
+      str_in_selector += "<tr class='separator'><td colspan=10>" + logs_in[i].id1 + "</td></tr><tr>";
       line_index = 0;
-      for (var j = 0; j < logs_in[i].num; j++) {
+      logs_in[i].id2 = logs_in[i].id2.sort(function(a,b){a<b})
+      for (var j in logs_in[i].id2) {
         if (line_index == cell_in_line) {
           str_in_selector += "</tr><tr>";
         }
-        str_in_selector += "<td index=" + logs.length + ">" + j
+        str_in_selector += "<td index=" + logs.length + " name=" + logs_in[i].id1 + logs_in[i].id2[j] + ">" + logs_in[i].id2[j]
           + "</td>";
         line_index++;
-        sig_to_log_index["" + logs_in[i].db + " " + j] = logs.length;
-        logs.push({db: logs_in[i].db, index: j});
+        sig_to_log_index["" + logs_in[i].id1 + " " + logs_in[i].id2[j]] = logs.length;
+        logs.push({db: logs_in[i].id1, index: logs_in[i].id2[j]});
       }
       str_in_selector += '</tr>';
     }
@@ -352,7 +343,7 @@ $(document).ready(function () {
         sig_to_sar_index[sars[i].neg] = i;
       }
       last_id1 = sars[i].id1;
-      str_in_selector += "<span index=" + i + ">" + sars[i].id2 + "</span>";
+      str_in_selector += "<span index=" + i + " name = " + sars[i].id1 + sars[i].id2 +">" + sars[i].id2 + "</span>";
     }
     $("#sar_select").append(str_in_selector);
     $('#sar_select span[index=' + current_sar_index + ']').css({"background-color": "rgb(80,80,80)"});
@@ -372,34 +363,11 @@ $(document).ready(function () {
 });
 jQuery.support.cors = true;
 
-var databaseUrl = "http://localhost:3000/db";
+var databaseUrl = "http://localhost:9000/db";
 //var databaseUrl = "http://166.111.69.71:27080";
-var restUrl = "http://166.111.69.71:3000";
+var restUrl = "http://localhost:9000";
 ///////////////////////////////////////////////////////////////////////
 //MongoDB
-function findOne(db, collection, criteria, foreach_function) {
-  var cursor_id;
-  jQuery.ajax(databaseUrl + '/' + db + '/' + collection +
-    '/_find?' +
-    'criteria=' + encodeURI(JSON.stringify(criteria)) +
-    '&limit=1', {
-    type: 'get',
-    success: function (collections) {
-      if (collections.ok != 1) {
-        console.warn("try again!!");
-        findOne(db, collection, criteria, foreach_function);
-        return;
-      }
-      cursor_id = collections.id;
-      if (collections.results.length == 0) {
-        return;
-      }
-      for (var i = 0; i < collections.results.length; i++) {
-        foreach_function(collections.results[i]);
-      }
-    }
-  });
-}
 function findAll(db, collection, criteria, fields, sort, for_all_function) {
   var cursor_id;
   var vectors = [];
@@ -410,19 +378,21 @@ function findAll(db, collection, criteria, fields, sort, for_all_function) {
     '&sort=' + encodeURI(JSON.stringify(sort)), {
     type: 'get',
     success: function (collections) {
-      if (collections.ok != 1) {
-        console.log("can't find!!");
-        return;
-      }
-      cursor_id = collections.id;
-      if (collections.results.length == 0) {
-        for_all_function(vectors);
-        return;
-      }
-      for (var i = 0; i < collections.results.length; i++) {
-        vectors.push(collections.results[i]);
-      }
-      more();
+      //if (collections.ok != 1) {
+      //  console.log("can't find!!");
+      //  return;
+      //}
+      //cursor_id = collections.id;
+      //if (collections.results.length == 0) {
+        //for_all_function(vectors);
+        //return;
+      //}
+      //for (var i = 0; i < collections.results.length; i++) {
+      //  vectors.push(collections.results[i]);
+      //}
+      //more();
+      for_all_function(collections);
+      return;
     }
   });
   function more() {
@@ -446,42 +416,5 @@ function findAll(db, collection, criteria, fields, sort, for_all_function) {
         more();
       }
     });
-  }
-}
-function if_sar_exist(day, node, sar_index, if_function) {
-  var day_time = time.start_time + day * seconds_in_day;
-  if (day == -1) {
-    findOne('Sar_signal', node,
-      {'tempID': {'$in': [sars[sar_index].neg, sars[sar_index].pos]}}, if_function);
-  } else {
-    findOne('Sar_signal', node,
-      {'logTime': {'$gte': day_time, '$lte': day_time + seconds_in_day},
-        'tempID': {'$in': [sars[sar_index].neg, sars[sar_index].pos]}}, if_function);
-  }
-}
-function if_log_exist(day, node, log_index, if_function) {
-  var day_time = time.start_time + day * seconds_in_day;
-  var log_cell = logs[log_index];
-  if (day == -1) {
-    findOne(log_cell.db, node,
-      {'tempID': log_cell.index}, if_function);
-  } else {
-    findOne(log_cell.db, node,
-      {'logTime': {'$gte': day_time, '$lte': day_time + seconds_in_day},
-        'tempID': log_cell.index}, if_function);
-  }
-}
-function if_job_exist(day, node, if_function) {
-  var day_time = time.start_time + day * seconds_in_day
-  if (day == -1) {
-    findOne('JobAssign', 'JobAssign',
-      {'eventTime': {'$gte': time.start_time},
-        'execHosts': node}, if_function);
-  } else {
-    findOne('JobAssign', 'JobAssign',
-      {'eventTime': {'$gte': day_time},
-        'submitTime': {'$lte': day_time + seconds_in_day},
-        'startTime': {'$lte': day_time + seconds_in_day},
-        'execHosts': node}, if_function);
   }
 }

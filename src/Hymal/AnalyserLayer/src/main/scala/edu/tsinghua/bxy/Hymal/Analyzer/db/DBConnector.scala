@@ -70,6 +70,12 @@ class NodeAbstractionVisitor extends DBReader with DBWriter {
     dbConnect(collectionName).update(key, entity.asInstanceOf[Entity].toDBObject, true)
     println(s"update $entity")
   }
+  def getDistinctionNode(collectionName:String):List[String] =
+    dbConnect(collectionName).distinct("node").toList.asInstanceOf[List[String]]
+  def getDistinctionDay(collectionName:String) =
+    dbConnect(collectionName).distinct("time").toList.asInstanceOf[List[Int]]
+  def getDistinctionName(collectionName:String) =
+    dbConnect(collectionName).distinct("name").toList.asInstanceOf[List[String]]
 } 
 class NodeEndMarkVisitor(collectionName:String) extends DBReader with DBWriter {
   val collectionConnect = connect("EndMark")(collectionName)

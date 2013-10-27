@@ -49,13 +49,14 @@ function draw_base_line(context,max,min) {
 	context.strokeStyle='rgba(0,0,0,1)';
 	context.stroke();
 }
+var seconds_in_day = 3600*24;
 function draw_sar(frame_id){
 	sar_draw.width = canvas_size.width;
 	sar_draw.height = canvas_size.height;
 	current_day_index = current_day_index*1;
   findAll('Sar_signal', nodes[current_node_index], 
-  	{'logTime':{'$gte':time.start_time+current_day_index*seconds_in_day,
-  							'$lte':time.start_time+(current_day_index+1)*seconds_in_day},
+  	{'logTime':{'$gte':days[current_day_index],
+  							'$lte':days[current_day_index] + seconds_in_day},
   	 'tempID':sars[current_sar_index].pos}, 
   	{'logTime':1},{'logTime':1},function(vector){
       console.warn(vector);
@@ -91,8 +92,8 @@ function draw_sar(frame_id){
   var line = 'var fields = {\''+sars[current_sar_index].id1+'.'+sars[current_sar_index].id2+'\':1};';
   eval(line);
   findAll('Sar', nodes[current_node_index], 
-  	{'_id':{'$gte':time.start_time+current_day_index*seconds_in_day,
-  							'$lte':time.start_time+(current_day_index+1)*seconds_in_day}}, 
+  	{'_id':{'$gte':days[current_day_index],
+  							'$lte':days[current_day_index] + seconds_in_day}},
   		fields,{'_id':1},function(vector){
   			if(current_frame_id != frame_id) {return;}
   			var max = 0;
@@ -122,7 +123,7 @@ function draw_sar(frame_id){
   				var target = vector[i];
 
   				var cur_time = target['_id'];
-  				var x = (cur_time - time.start_time - current_day_index*seconds_in_day)/seconds_in_day;
+  				var x = (cur_time - days[current_day_index])/seconds_in_day;
   				var y = 0;
 	  			if(target[sars[current_sar_index].id1]!=undefined && 
 	  				target[sars[current_sar_index].id1][sars[current_sar_index].id2]!=undefined) {
@@ -147,11 +148,11 @@ function draw_log(frame_id){
 	log_draw.width = canvas_size.width;
 	log_draw.height = canvas_size.height;
 	current_day_index = current_day_index*1;
-  	var day_time = time.start_time + current_day_index*seconds_in_day;
+  	var day_time = days[current_day_index];
   findAll('JobAssign', 'JobAssign', 
-  	{'eventTime':{'$gte':time.start_time+current_day_index*seconds_in_day},
-  	 'submitTime':{'$lte':time.start_time+(current_day_index+1)*seconds_in_day},
-  	 'startTime':{'$lte':time.start_time+(current_day_index+1)*seconds_in_day},
+  	{'eventTime':{'$gte':day_time},
+  	 'submitTime':{'$lte':day_time + seconds_in_day},
+  	 'startTime':{'$lte':day_time + seconds_in_day},
   	 'execHosts':nodes[current_node_index]}, 
   	{'eventTime':1,'submitTime':1,'startTime':1,'jStatus':1,'exitInfo':1},
   	{'submitTime':1}
@@ -191,7 +192,7 @@ function draw_log(frame_id){
 	findAll(log_cell.db, nodes[current_node_index], 
   		{'logTime':{'$gte':day_time,
   							'$lte':day_time+seconds_in_day},
-  		 'tempID':log_cell.index}, 
+  		 'tempID':log_cell.index-0}, 
   		{'logTime':1},{'logTime':1},function(vector){
   			if(current_frame_id != frame_id) {return;}
   			console.warn(vector);

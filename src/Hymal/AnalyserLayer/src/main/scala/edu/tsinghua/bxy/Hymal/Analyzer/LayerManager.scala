@@ -6,8 +6,8 @@ object LayerManager {
 		val sarModule = new NodeAbstractionModule(SarAbstractionProcessor)
 		val sbatchdModule = new NodeAbstractionModule(new LogAbstractionProcessor("sbatchd"))
     val jobModule = new SystemAbstractionModule(JobAbstractionProcessor)
-		//sarModule.run()
-		//sbatchdModule.run()
-    jobModule.run()
+		sarModule.run()
+		sbatchdModule.run()
+    	jobModule.run()
 	}
 }

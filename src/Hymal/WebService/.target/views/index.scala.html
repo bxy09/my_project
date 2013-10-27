@@ -1,0 +1,43 @@
+@(message: String)
+
+@main("Welcome to Play") {
+    <div id="all">
+        <div id="headline">
+            <div id="node_display" class="head_display"><span index=0 ></span>
+            </div>
+            <div id="time_display" class="head_display"><span index=1 ></span>
+            </div>
+            <div id="sar_display" class="head_display"><span index=2 ></span>
+            </div>
+            <div id="log_display" class="head_display"><span index=3 ></span>
+            </div>
+            <div class='cursor_rail'><div class='cursor'></div></div>
+            <div id="head_select">
+                <div id="node_select" index=0 class="head_select">
+                    <table></table>
+                </div>
+                <div id="time_select" index=1 class="head_select">
+                    <table></table>
+                </div>
+                <div id="sar_select" index=2 class="head_select">
+                </div>
+                <div id="log_select" index=3 class="head_select">
+                    <table></table>
+                </div>
+            </div>
+        </div>
+
+        <div id="central_panel">
+            <div id="sar_canvas">
+                <canvas id="sar_draw" width = 1000,height =250>
+                </canvas>
+            </div>
+            <div id="log_canvas">
+                <canvas id="log_draw" width = 1000,height = 250>
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <script src="@routes.Assets.at("javascripts/function.js")"></script>
+    <script src="@routes.Assets.at("javascripts/drawCanvas.js")"></script>
+}
