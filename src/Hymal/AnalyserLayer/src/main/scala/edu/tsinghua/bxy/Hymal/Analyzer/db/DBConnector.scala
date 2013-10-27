@@ -22,7 +22,7 @@ class NodeRecordReader(dbName:String, recordObject:RecordObject) extends DBReade
   private def extremeTime(node:String, isDescend:Boolean):Int = {
     val result = dbConnect(node).find().
     		sort(MongoDBObject(recordObject.timeName -> (if(isDescend)-1 else 1))).limit(1).toList
-    assert(result.length == 1)
+    assert(result.length == 1, s"node:$node db:$dbName")
     val resultOne:Any = result.head.get(recordObject.timeName) 
     val time = resultOne match {
       case time:Int => time
