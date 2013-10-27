@@ -28,7 +28,10 @@ class NodeAbstractionModule(processor: NodeAbstractionProcessor) extends Abstrac
     val initNodesEndMark = processor.getNodesEndMark
     val collections = processor.recordReader.getCollectionsOfNodes
     val nodeEndMarks = initNodesEndMark.values ++ collections.filter(node => initNodesEndMark.get(node).isEmpty).
-      map(node => new NodeEndMark(node, startTime(node), 0))
+      map(node => try{new NodeEndMark(node, startTime(node), 0)} catch{
+        case ex:Exception => println("Exception:from new NodeEndMark");null
+      }).filter(_!=null)
+      
     @tailrec def eachNodeProcess(nodeEndMarkList:Iterable[NodeEndMark], allNodeAcc:Map[String,Set[Int]]):Map[String,Set[Int]] = {
       if(nodeEndMarkList.isEmpty) allNodeAcc
       else {
