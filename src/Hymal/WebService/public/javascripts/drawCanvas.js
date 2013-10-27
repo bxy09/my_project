@@ -59,16 +59,15 @@ function draw_sar(frame_id){
   							'$lte':days[current_day_index] + seconds_in_day},
   	 'tempID':sars[current_sar_index].pos}, 
   	{'logTime':1},{'logTime':1},function(vector){
-      console.warn(vector);
   		if(current_frame_id != frame_id) {return;}
   		for(var i = 0; i < vector.length; i++) {
 		  		var square_width = 10*60/seconds_in_day;
-	  			var x = (vector[i]['logTime'] - time.start_time - current_day_index*seconds_in_day)/seconds_in_day;
+	  			var x = (vector[i]['logTime'] - days[current_day_index])/seconds_in_day;
 					sar_context.fillStyle = "rgba(0,189,0,0.5)";
 	  			var inside_pos_1 = position_inside(x-square_width/2,1);
 	  			var inside_pos_2 = position_inside(x+square_width/2,0);
-	  			sar_context.fillRect(inside_pos_1.x,inside_pos_1.y,
-	  				inside_pos_2.x-inside_pos_1.x,inside_pos_2.y-inside_pos_1.y);
+	  			//sar_context.fillRect(inside_pos_1.x,inside_pos_1.y,
+	  			//	inside_pos_2.x-inside_pos_1.x,inside_pos_2.y-inside_pos_1.y);
   		}
   	});
   if(sars[current_sar_index].neg>=0) {
@@ -195,7 +194,6 @@ function draw_log(frame_id){
   		 'tempID':log_cell.index-0}, 
   		{'logTime':1},{'logTime':1},function(vector){
   			if(current_frame_id != frame_id) {return;}
-  			console.warn(vector);
   			var output_val = [];
   			for(var i =0; i< 24*6;i++) {
   				output_val.push(0);
@@ -214,9 +212,7 @@ function draw_log(frame_id){
   				if(output_val[i] < min) {min = output_val[i];}
   				if(output_val[i] > max) {max = output_val[i];}
   			}
-  			console.warn(max,min);
   			max = 1*max;min = 1*min;
-  			console.warn(max,min);
   			draw_base_line(log_context,max,min);
 
   			log_context.beginPath();
