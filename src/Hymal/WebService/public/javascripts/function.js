@@ -363,9 +363,9 @@ $(document).ready(function () {
 });
 jQuery.support.cors = true;
 
-var databaseUrl = "http://localhost:9000/db";
+var databaseUrl = "http://166.111.69.71:9000/db";
 //var databaseUrl = "http://166.111.69.71:27080";
-var restUrl = "http://localhost:9000";
+var restUrl = "http://166.111.69.71:9000";
 ///////////////////////////////////////////////////////////////////////
 //MongoDB
 function findAll(db, collection, criteria, fields, sort, for_all_function) {
