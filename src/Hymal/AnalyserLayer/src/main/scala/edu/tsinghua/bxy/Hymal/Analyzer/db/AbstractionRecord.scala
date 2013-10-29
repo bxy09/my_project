@@ -21,7 +21,7 @@ class NodeAbstractionRecord(_time:Int, _node:String, _name:String, typeName:Stri
   
 } 
 object NodeEndMark{
-  def startTimeOfDay(time:Int):Int = ((time/3600+8)/24*24-8)*3600
+  def startTimeOfDay(time:Int):Int = if(time>0) ((time/3600+8)/24*24-8)*3600 else 0
   def apply(dbObject:DBObject) = {
     new NodeEndMark(dbObject.get("_id").asInstanceOf[String], dbObject.get("startTime").asInstanceOf[Int], 
         dbObject.get("endTime").asInstanceOf[Int])
