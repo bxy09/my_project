@@ -1,6 +1,6 @@
 package edu.tsinghua.bxy.Hymal.Analyzer.Module
 import scala.annotation.tailrec
-import edu.tsinghua.bxy.Hymal.Analyzer.db.{NodeEndMark, NodeAbstractionRecord}
+import edu.tsinghua.bxy.Hymal.Analyzer.db.{NodeEndMark, NodeAbstractionRecord, EndMark}
 
 trait Module {
   def run():Unit
@@ -18,6 +18,7 @@ class SystemAbstractionModule(processor: SystemAbstractionProcessor) extends Abs
       foreach{case(key, value) => value.
         foreach{case(time, node) => new NodeAbstractionRecord(time, node, key, processor.collectionName).
           update(processor.NodeAbstractionVisitor)}}
+    new NodeEndMark("all",initNodesEndMark.startTime, processor.recordReader.maxTime).update(processor.endMarkVisitor)
   }
   val modelName = "SystemAbstractionModule"
 }

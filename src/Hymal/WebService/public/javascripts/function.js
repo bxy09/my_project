@@ -363,7 +363,7 @@ $(document).ready(function () {
 });
 jQuery.support.cors = true;
 
-var databaseUrl = "http://166.111.69.71:9000/db";
+var databaseUrl = "/db";
 //var databaseUrl = "http://166.111.69.71:27080";
 var restUrl = "http://166.111.69.71:9000";
 ///////////////////////////////////////////////////////////////////////

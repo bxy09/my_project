@@ -8,7 +8,7 @@ abstract class EndMark(_startTime:Int, _endTime:Int) extends Entity with DBUpdat
 }
 
 abstract class AbstractionRecord(_time:Int) extends Entity with DBUpdateable{
-  val time = _time/(3600*24)*(3600*24)
+  val time = (_time/3600+8)/24*(3600*24)
 }
 class NodeAbstractionRecord(_time:Int, _node:String, _name:String, typeName:String) 
 	extends AbstractionRecord(_time){
