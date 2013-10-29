@@ -32,9 +32,9 @@ if($config{"IS_PROC_SYSLOG"} eq "true") {
 	system "rm SysLogFilePath";
 }
 if($config{"IS_PROC_SARLOG"} eq "true") {
-	system  "./src/sar_log/main.plx",
+	system  "./src/loader/sar_log/main.plx",
 		$config{"SAR_LOG_PATH"};
 }
-
+#system("cd src/Hymal;sbt AnalyserLayer/run");
 print "end\n";
 

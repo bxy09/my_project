@@ -9,15 +9,16 @@ use POSIX;
 my $CPU_IDLE_THRESHOLD = 50.0;
 @ARGV == 1 or die "para error!\n\tneed para sar_log_dir_path";
 my $dir_path = $ARGV[0];
-my @satar_list = `ls $dir_path`;
+my @satar_list = `ls $dir_path\*.tar.gz`;
 my $conn = MongoDB::Connection->new;
 my $Sar_db = $conn->get_database('Sar');
 my $have_time = 0;
 my $feature_count_store = {num=>0,info=>'',member=>[]};
 foreach my $tar_name(@satar_list) {
-	my $file_path = $dir_path.$tar_name;
+	my $file_path = $tar_name;
 	print $file_path;
 	system "tar -xvf $file_path ";
+	system "mv $file_path $file_path.done";
 #edit for temp_use
 	my ($temp_date) = $file_path =~ m/(\d+)\.tar.gz/;
 	system("mv tmp_$temp_date/* .");
