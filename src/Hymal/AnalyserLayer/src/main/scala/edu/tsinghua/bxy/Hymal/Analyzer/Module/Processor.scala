@@ -32,7 +32,7 @@ object JobAbstractionProcessor extends SystemAbstractionProcessor{
               val startTime= if(beginTime == 0) submitTime else beginTime
               if(startTime < Setting.systemStartTime) Setting.systemStartTime else startTime
             }
-            val times = 0::((startTime/3600+8)/24*(3600*24) to(eventTime, 3600*24)).toList
+            val times = 0::(NodeEndMark.startTimeOfDay(startTime) to(eventTime, 3600*24)).toList
             val newTimeNodePair = ("all"::nodes).map(node => times.map(time => (time, node))).reduce(_++_)
             val exitInfo = exitStatus match{
               case KnownExit(_)=> "KnownExit"
@@ -68,7 +68,7 @@ object SarAbstractionProcessor extends NodeAbstractionProcessor {
       if (records.hasNext) {
         records.next() match {
           case record: SarRecord =>
-            val time = (record.time/3600+8)/24*(24*3600)
+            val time = NodeEndMark.startTimeOfDay(record.time)
             val keys = record.features.filter{case (key, value) => Math.abs(value) > 0.001}.map{case (key, value) => key}.toSet
             val newKeys:Map[String, Set[Int]] = keys.filter(key => acc.get(key).isEmpty).map(key => (key,Set(0))).toMap
             val newAcc:Map[String, Set[Int]] = acc ++ newKeys
@@ -92,7 +92,7 @@ class LogAbstractionProcessor(name:String) extends NodeAbstractionProcessor {
     def applyAcc(records: Iterator[Entity], acc: Map[String, Set[Int]]): Map[String, Set[Int]] = {
       if (records.hasNext) records.next() match {
         case record: LogRecord =>
-          val time = (record.time/3600+8)/24*(24*3600)
+          val time = NodeEndMark.startTimeOfDay(record.time)
           val key:String = name + record.tempId
           val newAcc:Map[String, Set[Int]] =
             if(acc.contains(key)) acc.updated(key, acc(key)+time)

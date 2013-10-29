@@ -70,17 +70,14 @@ class NodeAbstractionModule(processor: NodeAbstractionProcessor) extends Abstrac
             abstractions
           }
         }.reduce((allNodeAcc, abstractions) => {
-          println(s"reduce: $allNodeAcc,$abstractions")
           val newKeysAbstraction = abstractions.filterNot { case (key, value) => allNodeAcc.contains(key) }
           val newAcc = allNodeAcc.map { case (key, value) => (key, value ++ abstractions.getOrElse(key, Set())) }
-          println("reduce end")
           newAcc ++ newKeysAbstraction
         })
       allNodeAbstraction.foreach {
         case (key, times) =>
           times.foreach(time => new NodeAbstractionRecord(time, "all", key, processor.collectionName).update(processor.abstractionVisitor))
       } //update abstractions in database
-      println("foreach end")
     }
   }
   val modelName = "SarAbstractionModel"

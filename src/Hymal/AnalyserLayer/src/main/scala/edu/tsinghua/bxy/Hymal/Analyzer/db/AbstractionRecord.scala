@@ -8,7 +8,7 @@ abstract class EndMark(_startTime:Int, _endTime:Int) extends Entity with DBUpdat
 }
 
 abstract class AbstractionRecord(_time:Int) extends Entity with DBUpdateable{
-  val time = (_time/3600+8)/24*(3600*24)
+  val time = NodeEndMark.startTimeOfDay(_time)
 }
 class NodeAbstractionRecord(_time:Int, _node:String, _name:String, typeName:String) 
 	extends AbstractionRecord(_time){
@@ -21,6 +21,7 @@ class NodeAbstractionRecord(_time:Int, _node:String, _name:String, typeName:Stri
   
 } 
 object NodeEndMark{
+  def startTimeOfDay(time:Int):Int = ((time/3600+8)/24*24-8)*3600
   def apply(dbObject:DBObject) = {
     new NodeEndMark(dbObject.get("_id").asInstanceOf[String], dbObject.get("startTime").asInstanceOf[Int], 
         dbObject.get("endTime").asInstanceOf[Int])
