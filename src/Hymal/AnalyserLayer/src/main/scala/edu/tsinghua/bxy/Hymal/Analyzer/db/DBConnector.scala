@@ -81,17 +81,17 @@ class NodeEndMarkVisitor(collectionName:String) extends DBReader with DBWriter {
   val collectionConnect = connect("EndMark")(collectionName)
   val getAll = collectionConnect.find().
     	map((line) => NodeEndMark(line))
-  override def update(collectionName:String, key: =>DBObject, entity:DBUpdateable) = {
+  override def update(_collectionName:String, key: =>DBObject, entity:DBUpdateable) = {
       collectionConnect.update(key, entity.asInstanceOf[Entity].toDBObject, true)
-      	println(s"update $entity")
+      	println(s"update $collectionName: $entity")
   }
 }
 class EndMarkVisitor(collectionName:String) extends DBReader with DBWriter {
   val collectionConnect = connect("EndMark")(collectionName)
   val get = collectionConnect.findOne().
     map((line) => NodeEndMark(line))
-  override def update(collectionName:String, key: =>DBObject, entity:DBUpdateable) = {
+  override def update(_collectionName:String, key: =>DBObject, entity:DBUpdateable) = {
     collectionConnect.update(key, entity.asInstanceOf[Entity].toDBObject, true)
-    println(s"update $entity")
+    println(s"update $collectionName: $entity")
   }
 }
