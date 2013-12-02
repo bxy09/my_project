@@ -15,8 +15,9 @@ my $Sar_db = $conn->get_database('Sar');
 my $have_time = 0;
 my $feature_count_store = {num=>0,info=>'',member=>[]};
 foreach my $tar_name(@satar_list) {
+	chomp $tar_name;
 	my $file_path = $tar_name;
-	print $file_path;
+	print $file_path."\n";
 	system "tar -xvf $file_path ";
 	system "mv $file_path $file_path.done";
 #edit for temp_use

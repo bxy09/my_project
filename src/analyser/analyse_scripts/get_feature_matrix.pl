@@ -13,9 +13,8 @@ my $JobA_db = $conn->get_database('JobAssign');
 my $job_col = $JobA_db->get_collection('JobAssign');
 my $sar_db = MongoDB::Connection->new->get_database('Sar');
 my $SEC_IN_DAY = 3600*24;
-my $time_node_zones =[{time=>["6/5","6/11"],node=>['c01b09','c01b20']},
-										 {time=>['6/13','6/26'],node=>['c01b09','c01b20']},
-										 {time=>['8/5','8/21'],node=>['c01b09','c01b20']}];
+my $time_node_zones =[{time=>["5/1","5/10"],node=>['c01b09','c01b20']}
+										 ];
 my @log_types = qw/cron messages secure lim mbatchd mbschd sbatchd pim res/;
 my %log_dbs = ();
 
@@ -40,9 +39,9 @@ foreach my $time_zone(@$time_node_zones) {
 	my @nodes = @node_list[$name_index{$time_zone->{node}[0]}..
 	$name_index{$time_zone->{node}[1]}];
 	my ($month,$day) = $time_zone->{time}[0]=~m{(\d+)/(\d+)};
-	my $start_time = {year=>2012,month=>$month,day=>$day};
+	my $start_time = {year=>2013,month=>$month,day=>$day};
 	($month,$day) = $time_zone->{time}[1]=~m{(\d+)/(\d+)};
-	my $end_time = {year=>2012,month=>$month,day=>$day};
+	my $end_time = {year=>2013,month=>$month,day=>$day};
 	my $start_unixtime = mktime(0,0,0,$start_time->{day},$start_time->{month}-1,
 						$start_time->{year}-1900);
 	my $end_unixtime = mktime(0,0,0,$end_time->{day},$end_time->{month}-1,
