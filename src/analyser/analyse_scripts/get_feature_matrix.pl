@@ -32,7 +32,7 @@ foreach my $log_type(@log_types) {
 		$log_dbs{$log_type}->get_collection($node)->ensure_index({logTime=>1});
 	}
 }
-my @feature_list = ();
+my %feature_list = ();
 my %feature_index = ();
 my $feature_num = 0;
 foreach my $time_zone(@$time_node_zones) {
@@ -98,14 +98,19 @@ foreach my $time_zone(@$time_node_zones) {
 				}
 			}
 			#push feature
-			push @feature_list, $features;
+			my $out_node = $node;
+			$out_node =~ s/[cb]//g;
+			my $record_key = $out_node." ".$record_time;
+			defined $feature_list{$record_key} and die "[$record_key] replicate record";
+			$feature_list{$record_key} = $features;
 		}
 	}
 }
 #output
 open OUT,">out_2.txt";
-print OUT $feature_num." ".scalar(@feature_list)."\n";
-foreach my $record(@feature_list){
+print OUT $feature_num." ".scalar(keys %feature_list)."\n";
+while (my ($record_key,$record) = each %feature_list){
+	print OUT $record_key." ";
 	foreach my $feature(@$record) {
 		unless(defined $feature){
 			print OUT "0 ";
